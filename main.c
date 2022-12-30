@@ -9,6 +9,21 @@ int loadFile(char *filePath) {
         printf("Load Fail: %s error\n", filePath);
         return -1;
     }
+    printf("Data:\n");
+    int nowData;
+    char nowHex[3];
+    for (int i = 0; i < 20; i++)
+    {
+        // fread(s, 1, 1, f);
+        nowData = fgetc(f);
+        if (nowData == EOF) {
+            printf("END");
+            break;
+        }
+        sprintf(nowHex, "%02x", nowData);
+        // nowHex = sprintf("%x", nowData);
+        printf("%s ", nowHex);
+    }
     fclose(f);
     return 0;
 }
